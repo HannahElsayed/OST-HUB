@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study Hub</title>
+<meta name="description" content="One place for Operating Systems and Statistical Methods: lectures, mind maps, quizzes, notes, planner and progress.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hub.css">
+<link rel="stylesheet" href="os.css">
+<link rel="stylesheet" href="stats.css">
+<link rel="stylesheet" href="mindmap.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side" id="side" aria-label="Main navigation"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div class="main">
+    <header class="top">
+      <button class="iconbtn burger" id="burger" aria-label="Open menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+      <div class="gsearch">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 11m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0M20 20l-4-4"/></svg>
+        <input id="gq" type="search" placeholder="Search lectures, concepts, notes, questions…  ( / )" aria-label="Search everything" autocomplete="off">
+        <div class="pop" id="popSearch" hidden></div>
+      </div>
+      <div style="position:relative">
+        <button class="iconbtn" id="btnRecent" aria-label="Recently studied" title="Recently studied"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2"/></svg></button>
+        <div class="pop" id="popRecent" hidden></div>
+      </div>
+      <div style="position:relative">
+        <button class="iconbtn" id="btnBell" aria-label="Reminders" title="Reminders"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><span class="badge-dot" id="bellN" hidden></span></button>
+        <div class="pop" id="popBell" hidden></div>
+      </div>
+      <a class="profile" href="#/settings" aria-label="Profile and settings"><span class="av" id="profAv">H</span><b id="profName">HANNAH</b></a>
+    </header>
+
+    <main class="view" id="view">
+      <div id="v-hub"></div>
+
+      <div id="v-os" hidden>
+        <div id="os-head"></div>
+        <div class="os" id="os-main"></div>
+        <div id="os-foot"></div>
+      </div>
+
+      <div id="v-sx" hidden>
+        <div id="sx-head"></div>
+        <div class="sx" id="sx-body">
+<div id="ch6">
+
+<nav>
+  <a href="#/stats/chapter/6/s1">1 Big idea</a><a href="#/stats/chapter/6/s2">2 X̄ &amp; CLT</a><a href="#/stats/chapter/6/s3">3 χ²</a><a href="#/stats/chapter/6/s4">4 t</a><a href="#/stats/chapter/6/s5">5 F</a>
+  <a href="#/stats/chapter/6/s6">6 Family tree</a><a href="#/stats/chapter/6/s7">7 Toolkit</a><a href="#/stats/chapter/6/s8">8 MCQ Quiz</a><a href="#/stats/chapter/6/s9">9 Practice</a><a href="#/stats/chapter/6/s10">10 Exercises</a><a href="#/stats/chapter/6/s11">11 Cheat sheet</a>
+</nav>
+
+<!-- 1 -->
+<section id="s1">
+  <h2><span class="n">1</span>The big idea</h2>
+  <div class="card">
+    <p><b>Think of tasting soup.</b> You can't drink the whole pot, so you take one spoonful (the <b>sample</b>) to judge the whole pot (the <b>population</b>). Every spoonful tastes a little different. So any number you compute from a sample, like the mean X̄, <b>changes from sample to sample</b>.</p>
+    <p>That means a statistic is itself a <b>random variable</b>, and its distribution is called a <b>sampling distribution</b>.</p>
+    <div class="note ar">💡 بالعربي: الـ statistic (زي X̄) بيتغير من عينة لعينة، فليه distribution. الفصل ده بيقولك شكل الـ distribution ده إيه.</div>
+  </div>
+  <div class="card">
+    <table>
+      <tr><th>Term</th><th>Plain meaning</th></tr>
+      <tr><td>Population</td><td>Everything you want to learn about</td></tr>
+      <tr><td>Parameter</td><td>A fixed, unknown number of the population (μ, σ²)</td></tr>
+      <tr><td>Random sample</td><td>X₁,…,Xₙ independent, from the same distribution</td></tr>
+      <tr><td>Statistic</td><td>A number computed from the sample, with no unknown parameter (X̄, S²)</td></tr>
+    </table>
+  </div>
+  <div class="box">The chapter has only <b>4 results</b>:<br>
+  X̄ → <b>Normal</b> &nbsp;|&nbsp; (n−1)S²/σ² → <b>χ²</b> &nbsp;|&nbsp; (X̄−μ)/(S/√n) → <b>t</b> &nbsp;|&nbsp; ratio of variances → <b>F</b></div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <h2><span class="n">2</span>The sample mean X̄ and the CLT</h2>
+  <div class="card">
+    <p><b>Intuition:</b> one person's weight is noisy, but the average of 100 people is very stable. More data → less spread.</p>
+    <div class="box">E(X̄) = μ &nbsp;&nbsp; Var(X̄) = σ²/n &nbsp;&nbsp; sd(X̄) = σ/√n<br>
+    Z = (X̄ − μ)/(σ/√n) ~ N(0,1)</div>
+    <ul>
+      <li><b>Normal population:</b> X̄ is exactly normal for any n (Theorem 6.1).</li>
+      <li><b>Any population, n ≥ 30:</b> X̄ is approximately normal (Central Limit Theorem).</li>
+      <li><b>σ unknown and n large:</b> use S instead of σ.</li>
+      <li><b>Two samples:</b> Var(X̄₁ − X̄₂) = σ₁²/n₁ + σ₂²/n₂. Variances always <b>add</b>.</li>
+    </ul>
+    <div class="note ar">💡 بالعربي: الـ σ/√n جاية من Chapter 5: Var(ΣXᵢ/n) = nσ²/n² = σ²/n.</div>
+  </div>
+
+  <h3>Try it: watch the CLT happen</h3>
+  <div class="card">
+    <div class="ctl">
+      <label>Population <select id="popSel"><option value="normal">Normal</option><option value="unif">Uniform</option><option value="exp">Exponential (skewed)</option><option value="bimodal">Bimodal</option></select></label>
+      <label>Sample size n = <b id="nVal">5</b> <input type="range" id="nSl" min="1" max="100" value="5"></label>
+    </div>
+    <div class="ctl"><button id="b1">Take 1 sample</button><button id="b1000">Take 1000 samples</button><button class="ghost" id="bReset">Reset</button></div>
+    <div class="grid2">
+      <div><div class="crumb">Population</div><canvas id="cvPop"></canvas></div>
+      <div><div class="crumb">Histogram of sample means (orange = N(μ, σ²/n))</div><canvas id="cvMeans"></canvas></div>
+    </div>
+    <div class="out" id="cltOut"></div>
+    <div class="note">Try: Exponential, n = 1, then n = 5, 30, 100. The bars become a narrow bell curve even though the population is skewed.</div>
+  </div>
+
+  <div class="card">
+    <b>Example 6.1.</b> μ = 900, σ = 50, n = 64. Find P(895 &lt; X̄ &lt; 910).
+    <div class="out" style="font-size:16px">sd(X̄) = 50/√64 = 6.25<br>
+    z₁ = (895−900)/6.25 = −0.8,  z₂ = (910−900)/6.25 = 1.6<br>
+    P = Φ(1.6) − Φ(−0.8) = 0.9452 − 0.2119 = <b>0.733</b></div>
+    <p style="margin-top:12px"><b>Example 6.2.</b> A: μ=1400, σ=200. B: μ=1200, σ=100. n = 125 each. Find P(X̄<sub>A</sub> − X̄<sub>B</sub> ≥ 160).</p>
+    <div class="out" style="font-size:16px">mean = 200, sd = √(200²/125 + 100²/125) = √400 = 20<br>
+    z = (160−200)/20 = −2 → P(Z ≥ −2) = <b>0.977</b></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <h2><span class="n">3</span>Chi-squared χ²(ν)</h2>
+  <div class="card">
+    <p><b>Intuition:</b> take ν standard normals, square each (so signs don't cancel), and add them. You get a "total squared error". It is always positive and skewed right.</p>
+    <div class="box">U = Z₁² + … + Z<sub>ν</sub>² ~ χ²(ν) &nbsp;&nbsp; Mean = ν, Variance = 2ν<br>
+    Independent χ²'s add: χ²(a) + χ²(b) = χ²(a+b)</div>
+    <p><b>The key result (Theorem 6.4):</b> for a normal sample,</p>
+    <div class="box">(n−1)S²/σ² ~ χ²(n−1) &nbsp; and X̄, S² are independent</div>
+    <p><b>Why n−1, not n?</b> We used X̄ instead of the true μ, which costs one degree of freedom. Also: E(S²) = σ² and Var(S²) = 2σ⁴/(n−1).</p>
+    <p>Notation: χ²<sub>α,ν</sub> is the point with area <b>α to the right</b>. Example: χ²<sub>0.05,12</sub> = 21.03.</p>
+    <div class="note ar">💡 بالعربي: χ² = مجموع مربعات ν من الـ Z. ولما نستخدم S² بنخسر درجة حرية فبتبقى n−1.</div>
+  </div>
+  <div class="card">
+    <div class="ctl"><label>d.f. ν = <b id="chiNuV">3</b> <input type="range" id="chiNu" min="1" max="30" value="3"></label><button id="chiRe" class="ghost">Re-draw</button></div>
+    <canvas id="cvChi"></canvas>
+    <div class="out" id="chiOut"></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <h2><span class="n">4</span>Student's t(r)</h2>
+  <div class="card">
+    <p><b>Intuition:</b> in real life σ is unknown, so we replace it with S. But S also varies from sample to sample, especially for small n. That extra uncertainty gives the same bell shape with <b>heavier tails</b>.</p>
+    <div class="box">T = Z / √(U/r) ~ t(r), &nbsp; Z ~ N(0,1), U ~ χ²(r), independent<br>
+    For a normal sample: (X̄ − μ)/(S/√n) ~ t(n−1)</div>
+    <ul>
+      <li>Symmetric about 0, so t<sub>1−α</sub> = −t<sub>α</sub>.</li>
+      <li>As the d.f. grows, t becomes N(0,1) (close enough for d.f. &gt; 30).</li>
+      <li>Example: t<sub>0.025,5</sub> = 2.571.</li>
+    </ul>
+    <div class="note ar">💡 بالعربي: لما σ مش معروفة والعينة صغيرة استخدم t بدل Z. الـ d.f. = n−1.</div>
+  </div>
+  <div class="card">
+    <div class="ctl"><label>d.f. ν = n−1 = <b id="tNuV">4</b> <input type="range" id="tNu" min="1" max="30" value="4"></label><button id="tRe" class="ghost">Re-draw</button></div>
+    <canvas id="cvT"></canvas>
+    <div class="out" id="tOut"></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <h2><span class="n">5</span>F(r₁, r₂)</h2>
+  <div class="card">
+    <p><b>Intuition:</b> F compares two variances. If they are equal, the ratio is near 1.</p>
+    <div class="box">F = (U₁/r₁)/(U₂/r₂) ~ F(r₁, r₂), &nbsp; U₁ ~ χ²(r₁), U₂ ~ χ²(r₂), independent<br>
+    Two normal samples: (S₁²/σ₁²)/(S₂²/σ₂²) ~ F(n₁−1, n₂−1)</div>
+    <p>Handy facts: 1/F ~ F(r₂, r₁). If T ~ t(ν), then T² ~ F(1, ν).</p>
+  </div>
+  <div class="card">
+    <div class="ctl"><label>r₁ = <b id="f1V">5</b> <input type="range" id="f1" min="1" max="30" value="5"></label><label>r₂ = <b id="f2V">10</b> <input type="range" id="f2" min="1" max="30" value="10"></label><button id="fRe" class="ghost">Re-draw</button></div>
+    <canvas id="cvF"></canvas>
+    <div class="out" id="fOut"></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <h2><span class="n">6</span>The Family Tree (memorize this)</h2>
+  <div class="card">
+    <div class="tree">
+      <div class="row"><span class="nd">Z ~ N(0,1)</span><span class="arr">square &amp; add ν of them →</span><span class="nd">χ²(ν)</span></div>
+      <div class="row"><span class="nd">Z</span><span class="arr">and</span><span class="nd">U ~ χ²(r)</span><span class="arr">→ Z / √(U/r) →</span><span class="nd t">t(r)</span></div>
+      <div class="row"><span class="nd">χ²(r₁)</span><span class="arr">and</span><span class="nd">χ²(r₂)</span><span class="arr">→ (U₁/r₁)/(U₂/r₂) →</span><span class="nd f">F(r₁,r₂)</span></div>
+      <div class="row"><span class="nd t">t(ν)</span><span class="arr">squared →</span><span class="nd f">F(1,ν)</span></div>
+    </div>
+    <p style="margin-bottom:0">Every "state the distribution" question is just matching the expression to one of these patterns. Tip: if Xᵢ ~ N(0,σ²), then σ cancels in ratios, e.g. (X₁²+X₂²)/(X₃²+X₄²) ~ F(2,2).</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <h2><span class="n">7</span>Problem-solving toolkit</h2>
+  <div class="card">
+    <b>5-step recipe for any problem:</b>
+    <ol>
+      <li>What is random? (X, X̄, S², a sum, a ratio)</li>
+      <li>Write its mean and sd (for X̄: μ and σ/√n).</li>
+      <li>Standardize: z = (value − mean)/sd.</li>
+      <li>Name the distribution and its d.f.</li>
+      <li>Sketch the curve and shade the area, then use the table.</li>
+    </ol>
+  </div>
+
+  <h3>🔎 Distribution Detective</h3>
+  <div class="card"><div id="dtBox"></div></div>
+
+  <h3>🧮 Calculator 1: X̄ probabilities</h3>
+  <div class="card">
+    <div class="ctl"><label>Case <select id="c1mode"><option value="one">One population</option><option value="two">Two populations: X̄₁ − X̄₂</option></select></label></div>
+    <div class="ctl" id="c1one"><label>μ <input type="number" id="c1mu" value="900"></label><label>σ <input type="number" id="c1sg" value="50"></label><label>n <input type="number" id="c1n" value="64"></label></div>
+    <div class="ctl" id="c1two" style="display:none"><label>μ₁ <input type="number" id="c1mu1" value="1400"></label><label>σ₁ <input type="number" id="c1sg1" value="200"></label><label>n₁ <input type="number" id="c1n1" value="125"></label><label>μ₂ <input type="number" id="c1mu2" value="1200"></label><label>σ₂ <input type="number" id="c1sg2" value="100"></label><label>n₂ <input type="number" id="c1n2" value="125"></label></div>
+    <div class="ctl"><label>Event <select id="c1ev"><option value="between">a &lt; X̄ &lt; b</option><option value="above">X̄ &gt; a</option><option value="below">X̄ &lt; a</option></select></label><label>a <input type="number" id="c1a" value="895" step="any"></label><label id="c1bl">b <input type="number" id="c1b" value="910" step="any"></label><button id="c1go">Solve</button></div>
+    <div class="out" id="c1out">Press Solve.</div>
+  </div>
+
+  <h3>📖 Calculator 2: the tables</h3>
+  <div class="card">
+    <div class="ctl"><label>Distribution <select id="c2d"><option value="t">t(ν)</option><option value="chi">χ²(ν)</option><option value="f">F(r₁,r₂)</option><option value="z">Z ~ N(0,1)</option></select></label>
+    <label id="c2p1l">ν <input type="number" id="c2p1" value="12" min="1"></label><label id="c2p2l" style="display:none">r₂ <input type="number" id="c2p2" value="10" min="1"></label></div>
+    <div class="ctl"><label>Mode <select id="c2m"><option value="crit">Given α → find the upper point</option><option value="prob">Given x → find probabilities</option></select></label><label>value <input type="number" id="c2v" value="0.05" step="any"></label><button id="c2go">Compute</button></div>
+    <div class="out" id="c2out">Press Compute.</div>
+  </div>
+</section>
+
+<!-- 8 MCQ -->
+<section id="s8">
+  <h2><span class="n">8</span>MCQ Quiz (24 questions)</h2>
+  <div class="card">
+    <div class="xp"><span>Question <b id="mqN">1</b> / <b id="mqT">24</b></span><span>Score: <b id="mqS">0</b></span></div>
+    <div id="mqBox" style="margin-top:12px"></div>
+    <div class="out" id="mqFb" style="display:none"></div>
+    <div class="ctl"><button id="mqNext" style="display:none">Next question</button><button class="ghost" id="mqRestart">Restart (shuffle)</button></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <h2><span class="n">9</span>Practice generator (unlimited)</h2>
+  <div class="card">
+    <div class="xp"><span>XP: <b id="xp">0</b></span><span>Streak: <b id="streak">0</b></span><span>Level: <b id="lvl">1</b></span></div>
+    <div class="ctl"><label>Type <select id="ptype"><option value="mix">Mixed</option><option value="A">X̄ probability</option><option value="B">X̄₁ − X̄₂ probability</option><option value="C">Table lookup (t / χ²)</option><option value="D">State the distribution (MCQ)</option></select></label><button id="pnew">New question</button></div>
+    <div id="pq" style="margin-top:8px"></div>
+    <div class="ctl" id="pinWrap"><input type="text" id="pin" placeholder="your answer"><button id="pchk">Check</button></div>
+    <div class="out" id="pfb">Press “New question”.</div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <h2><span class="n">10</span>Exercises from your sheet, with answers</h2>
+  <p style="color:var(--mut)">Try each one first, then open the answer.</p>
+  <details><summary>[1] μ=800, σ=40, n=36. (a) P(790&lt;X̄&lt;810) (b) P(X̄&gt;815)</summary>
+    sd(X̄) = 40/6 = 6.667.<br>(a) z = ±1.5 → 2Φ(1.5) − 1 = <b>0.8664</b><br>(b) z = 2.25 → 1 − Φ(2.25) = <b>0.0122</b></details>
+  <details><summary>[2] A (4000, 300, n=100), B (4500, 200, n=50). P(X̄<sub>B</sub> − X̄<sub>A</sub> ≥ 600) and ≥ 450</summary>
+    mean = 500, var = 200²/50 + 300²/100 = 1700, sd = 41.23.<br>(a) z = 2.43 → <b>≈ 0.0077</b><br>(b) z = −1.21 → <b>≈ 0.887</b></details>
+  <details><summary>[3] (a) P(−t<sub>0.005</sub> &lt; t &lt; t<sub>0.01</sub>) (b) P(t &gt; −t<sub>0.025</sub>)</summary>
+    (a) 1 − 0.005 − 0.01 = <b>0.985</b>. (b) <b>0.975</b>.</details>
+  <details><summary>[4] n = 24 (ν = 23). Find K.</summary>
+    (a) P(t&gt;K) = 0.975 − 0.965 = 0.01 → K = <b>2.500</b><br>(b) P(t&gt;K) = 0.095 + 0.005 = 0.10 → K = <b>1.319</b><br>(c) 0.05 in each tail → K = <b>1.714</b></details>
+  <details><summary>[5] X~N(0,16), Y~N(5,4), U~χ²(4), V~χ²(16)</summary>
+    (a) (X/4)² + ((Y−5)/2)² → <b>χ²(2)</b><br>(b) X/√V = (X/4)/√(V/16) → <b>t(16)</b> (as read from your PDF)<br>(c) 4U/V = (U/4)/(V/16) → <b>F(4,16)</b><br>(d) X+2Y → <b>N(10, 32)</b><br>(e) 2X−Y → <b>N(−5, 68)</b></details>
+  <details><summary>[6a], [7a]</summary>
+    [6a] 3X₁ − 5X₂ + 8 ~ <b>N(8, 34σ²)</b>. [7a] 5X₁ − 7X₂ + 2 ~ <b>N(2, 74σ²)</b>.<br>
+    <span style="color:var(--mut)">The other parts were garbled in your PDF text. Send me a photo and I'll add them.</span></details>
+  <details><summary>[8] (X₁²+X₂²)/(X₃²+X₄²), Xᵢ i.i.d. N(0,σ²)</summary>σ² cancels; top and bottom are each χ²(2) over their d.f. → <b>F(2,2)</b>, answer <b>(c)</b>.</details>
+  <details><summary>[9] W = X² + U + V</summary>X² ~ χ²(1), so W ~ <b>χ²(1+4+16) = χ²(21)</b>.</details>
+  <details><summary>[10] Z = X̄ − 2Ȳ + 3 (n=10 from N(4,9), n=20 from N(5,16))</summary>
+    X̄ ~ N(4, 0.9), Ȳ ~ N(5, 0.8). mean = 4 − 10 + 3 = −3, var = 0.9 + 4(0.8) = 4.1 → <b>Z ~ N(−3, 4.1)</b>.</details>
+  <details><summary>[11] Show T ~ t(ν) ⟹ T² ~ F(1,ν)</summary>
+    T = Z/√(U/ν), so T² = (Z²/1)/(U/ν). Z² ~ χ²(1), U ~ χ²(ν), independent, so T² ~ <b>F(1,ν)</b>. ∎</details>
+  <details><summary>[12a] 2X − 3Y + 5 with X~N(1,16), Y~N(0,4)</summary>
+    mean = 2 + 5 = 7, var = 4(16) + 9(4) = 100 → <b>N(7,100)</b>, option ii.</details>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <h2><span class="n">11</span>Cheat sheet &amp; traps</h2>
+  <div class="card">
+    <table>
+      <tr><th>Statistic</th><th>Condition</th><th>Distribution</th></tr>
+      <tr><td>(X̄−μ)/(σ/√n)</td><td>normal population, or n ≥ 30</td><td>N(0,1)</td></tr>
+      <tr><td>(X̄−μ)/(S/√n)</td><td>n ≥ 30</td><td>≈ N(0,1)</td></tr>
+      <tr><td>(X̄−μ)/(S/√n)</td><td>normal population, n &lt; 30, σ unknown</td><td>t(n−1)</td></tr>
+      <tr><td>(n−1)S²/σ²</td><td>normal population</td><td>χ²(n−1)</td></tr>
+      <tr><td>(S₁²/σ₁²)/(S₂²/σ₂²)</td><td>two independent normal samples</td><td>F(n₁−1, n₂−1)</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <b>Common mistakes</b>
+    <ul>
+      <li>Using σ instead of σ/√n for X̄.</li>
+      <li>Subtracting variances for X̄₁ − X̄₂. They add.</li>
+      <li>Using χ²(n) instead of χ²(n−1) with S².</li>
+      <li>Forgetting that tables give the area to the <b>right</b>.</li>
+      <li>Not sketching the area first.</li>
+    </ul>
+    <b>Typos in your notes</b>
+    <ul>
+      <li>The MINITAB example says χ²<sub>0.5,12</sub>; it should be χ²<sub>0.05,12</sub> = 21.03.</li>
+      <li>Example 6.1 shows P(−8.0&lt;Z&lt;1.6); it should be −0.8 (the answer 0.733 is right).</li>
+      <li>Example 6.2 ends with "600"; it should be 160.</li>
+      <li>"t is always greater than 1" is inaccurate. The idea is that t has more spread than Z.</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+<div id="ch5" hidden>
+<div class="chhead"><div class="tag">Chapter 5</div><h1 style="margin:0;font-size:clamp(24px,4vw,34px)">Bivariate (Joint) Distributions</h1></div>
+<nav>
+  <a href="#/stats/chapter/5/a1">1 Big idea</a><a href="#/stats/chapter/5/a2">2 Table Lab</a><a href="#/stats/chapter/5/a3">3 Marginal &amp; conditional</a><a href="#/stats/chapter/5/a4">4 Independence</a><a href="#/stats/chapter/5/a5">5 Covariance</a><a href="#/stats/chapter/5/a6">6 Sums</a><a href="#/stats/chapter/5/a7">7 Continuous</a><a href="#/stats/chapter/5/a8">8 MCQ Quiz</a><a href="#/stats/chapter/5/a9">9 Exercises</a>
+</nav>
+
+<section id="a1">
+  <h2><span class="n">1</span>The big idea</h2>
+  <div class="card">
+    <p>Sometimes we care about <b>two random variables at once</b> (height and weight, hours studied and grade). Their joint behavior lives in a <b>table</b>: each cell is the probability of a pair.</p>
+    <div class="box">Joint p.m.f.: h(x,y) = P(X = x, Y = y)<br>
+    Valid if <b>h(x,y) ≥ 0</b> for all pairs and <b>ΣΣ h(x,y) = 1</b></div>
+    <p><b>Example 5.1.</b> h(x,y) = kxy for x, y ∈ {1,2,3}. The sum is k(1+2+3)² = 36k = 1, so <b>k = 1/36</b>.<br>
+    P(X+Y ≥ 4) = 1 − [h(1,1) + h(1,2) + h(2,1)] = 1 − 5/36 = <b>31/36</b>.</p>
+    <p><b>Continuous case:</b> a joint p.d.f. f(x,y) ≥ 0 with a total volume of 1 under the surface. Probabilities are double integrals over a region.</p>
+    <div class="note ar">💡 بالعربي: الـ joint table فيه كل خانة = احتمال الاتنين مع بعض، ومجموع كل الخانات = 1.</div>
+  </div>
+</section>
+
+<section id="a2">
+  <h2><span class="n">2</span>Joint Table Lab</h2>
+  <div class="card">
+    <p style="margin-top:0">Edit any cell (or load an example). The lab computes the marginals, conditionals, independence test, covariance and correlation, and draws the covariance picture.</p>
+    <div class="ctl">
+      <button class="ghost" data-pre="books">Ex 5.2 books</button><button class="ghost" data-pre="prod">Ex 5.1 (h = xy/36)</button><button class="ghost" data-pre="ex5">Exercise [5]</button>
+      <button class="ghost" id="jaddx">+ X value</button><button class="ghost" id="jrmx">− X value</button><button class="ghost" id="jaddy">+ Y value</button><button class="ghost" id="jrmy">− Y value</button>
+    </div>
+    <div id="jbox" style="overflow-x:auto"></div>
+    <div class="out" id="jout"></div>
+    <div class="ctl"><label>Conditional <select id="jct"><option value="xy">X given Y =</option><option value="yx">Y given X =</option></select></label><select id="jcv"></select></div>
+    <div class="out" id="jcond"></div>
+    <h3>The covariance picture</h3>
+    <canvas id="cvJ"></canvas>
+    <div class="note">Bubble size = probability. Dashed lines = μ<sub>X</sub> and μ<sub>Y</sub>. Probability in the <span class="ok">green</span> quadrants (both above or both below the means) pushes cov positive. Probability in the <span class="bad">red</span> quadrants pushes it negative.</div>
+  </div>
+</section>
+
+<section id="a3">
+  <h2><span class="n">3</span>Marginal &amp; conditional</h2>
+  <div class="card">
+    <ul>
+      <li><b>Marginal = the table's margins.</b> Add over the other variable: g<sub>X</sub>(x) = Σ<sub>y</sub> h(x,y) and g<sub>Y</sub>(y) = Σ<sub>x</sub> h(x,y).</li>
+      <li><b>Conditional = slice, then rescale.</b> Take one row (say Y = y) and divide by its total so it sums to 1:
+        <div class="box">f(x | y) = h(x,y) / g<sub>Y</sub>(y)</div></li>
+      <li><b>Continuous:</b> sums become integrals: f<sub>X</sub>(x) = ∫ f(x,y) dy, and f(x|y) = f(x,y)/f<sub>Y</sub>(y).</li>
+    </ul>
+    <p><b>Example 5.4/5.6.</b> From the books table: g<sub>X</sub> = (5/14, 15/28, 3/28) and g<sub>Y</sub> = (15/28, 3/7, 1/28). Given Y = 1: f(0|1) = (3/14)/(3/7) = 1/2, f(1|1) = 1/2, f(2|1) = 0.</p>
+    <div class="note ar">💡 بالعربي: marginal = اجمع الصف أو العمود. conditional = خد صف واحد وقسمه على مجموعه.</div>
+  </div>
+</section>
+
+<section id="a4">
+  <h2><span class="n">4</span>Independence</h2>
+  <div class="card">
+    <div class="box">Discrete: X, Y independent ⟺ h(x,y) = g<sub>X</sub>(x)·g<sub>Y</sub>(y) for <b>every</b> cell<br>
+    Continuous: f(x,y) = f<sub>X</sub>(x)·f<sub>Y</sub>(y) for all x, y</div>
+    <ul>
+      <li>One failing cell is enough to prove <b>dependent</b>. Example 5.8: h(0,0) = 3/28, but g<sub>X</sub>(0)·g<sub>Y</sub>(0) = (5/14)(15/28) = 75/392 ≠ 42/392.</li>
+      <li>In the continuous case, if the support is <b>not a rectangle</b> (like the triangle x+y &lt; 1), the variables are dependent.</li>
+      <li>Try it: load "Ex 5.1" in the Lab. It says <b>independent</b>, since xy/36 factors as (x/6)(y/6).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="a5">
+  <h2><span class="n">5</span>Expectation, covariance, correlation</h2>
+  <div class="card">
+    <div class="box">E[g(X,Y)] = ΣΣ g(x,y) h(x,y) &nbsp;&nbsp; E[XY] = ΣΣ xy·h(x,y)<br>
+    cov(X,Y) = E[XY] − μ<sub>X</sub>μ<sub>Y</sub> &nbsp;&nbsp; ρ = cov(X,Y)/(σ<sub>X</sub>σ<sub>Y</sub>), &nbsp; −1 ≤ ρ ≤ 1</div>
+    <ul>
+      <li>cov &gt; 0: X and Y tend to be high together or low together. cov &lt; 0: one high, the other low.</li>
+      <li>ρ is cov rescaled to be unitless, so it is the better measure of <b>linear</b> relationship.</li>
+      <li><b>Independent ⟹ E[XY] = E[X]E[Y] ⟹ cov = 0.</b> The reverse is false: zero covariance does <b>not</b> prove independence.</li>
+      <li>Properties: cov(X,c) = 0, cov(X,X) = Var(X), cov(X, aY+b) = a·cov(X,Y).</li>
+    </ul>
+    <p><b>Example 5.10 (books).</b> E[X] = 3/4, E[Y] = 1/2, E[XY] = 3/14, so cov = 3/14 − 3/8 = <b>−9/56</b>. Var(X) = 45/112, Var(Y) = 9/28, so ρ = <b>−0.447</b>. Load "Ex 5.2 books" in the Lab to see it.</p>
+    <div class="note ar">💡 بالعربي: independent تدي cov = 0، بس cov = 0 مش معناها independent.</div>
+  </div>
+</section>
+
+<section id="a6">
+  <h2><span class="n">6</span>Sums &amp; linear combinations</h2>
+  <div class="card">
+    <div class="box">E(aX + bY) = aE(X) + bE(Y)<br>
+    Var(aX + bY) = a²Var(X) + b²Var(Y) + <b>2ab·cov(X,Y)</b><br>
+    Uncorrelated or independent: the cov term vanishes and variances add.</div>
+    <ul>
+      <li>Var(X+Y) = VarX + VarY + 2cov, Var(X−Y) = VarX + VarY − 2cov, cov(X−Y, X+Y) = VarX − VarY.</li>
+      <li>Constants added (the +5 in 3X − 2Y + 5) never change a variance or a covariance.</li>
+      <li>General: cov(a₁X + a₂Y, b₁X + b₂Y) = a₁b₁VarX + (a₁b₂ + a₂b₁)cov + a₂b₂VarY.</li>
+    </ul>
+  </div>
+  <h3>🧮 Calculator: variances &amp; covariance of combinations</h3>
+  <div class="card">
+    <div class="ctl"><label>Var(X) <input type="number" id="qvx" value="5"></label><label>Var(Y) <input type="number" id="qvy" value="4"></label><label>cov(X,Y) <input type="number" id="qcov" value="3"></label></div>
+    <div class="ctl"><label>U = <input type="number" id="qa1" value="3" style="width:70px">X + <input type="number" id="qa2" value="-2" style="width:70px">Y</label><label>V = <input type="number" id="qb1" value="1" style="width:70px">X + <input type="number" id="qb2" value="1" style="width:70px">Y</label><button id="qgo">Compute</button></div>
+    <div class="out" id="qout">Press Compute.</div>
+  </div>
+  <div class="card">
+    <b>Example 5.13</b> (Var X=1, Var Y=5, Var Z=2, cov(X,Y)=−2, cov(X,Z)=−1, cov(Y,Z)=0).<br>
+    Var(3X − Y + 2Z) = 9(1) + 5 + 4(2) + 2(−3·(−2) + 6·(−1) + 0) = <b>22</b>.<br>
+    cov(X−2Y+3Z, −2X+3Y+4Z) expands to −2 − 6 − 4 − 8 − 30 + 6 + 24 = <b>−20</b>. <span style="color:var(--mut)">(Your notes print −14, but the same expansion gives −20; ask your instructor to confirm.)</span>
+  </div>
+</section>
+
+<section id="a7">
+  <h2><span class="n">7</span>The continuous case: draw the region first</h2>
+  <div class="card">
+    <div class="box">Valid joint p.d.f.: f ≥ 0 and ∬ f dx dy = 1</div>
+    <ol>
+      <li><b>Sketch</b> the region (for x &gt; 0, y &gt; 0, x+y &lt; 1 it is a triangle).</li>
+      <li>Write the limits from the picture: x from 0 to 1−y, y from 0 to 1.</li>
+      <li>Integrate. Most mistakes come from wrong limits.</li>
+    </ol>
+    <p><b>Example 5.3.</b> f = kxy on the triangle. ∫₀¹∫₀^{1−y} kxy dx dy = k∫₀¹ y(1−y)²/2 dy = k/24, so <b>k = 24</b>.</p>
+    <p><b>Marginals (5.5):</b> f<sub>X</sub>(x) = ∫₀^{1−x} 24xy dy = <b>12x(1−x)²</b>, and likewise f<sub>Y</sub>(y) = 12y(1−y)².</p>
+    <p><b>Conditional (5.7):</b> f(x|y) = 24xy/(12y(1−y)²) = <b>2x/(1−y)²</b>, 0 &lt; x &lt; 1−y. For y = ¼: f(x|¼) = 32x/9 on (0, ¾), so P(X &gt; ½ | Y = ¼) = ∫<sub>½</sub><sup>¾</sup> 32x/9 dx = <b>5/9</b>.</p>
+    <p><b>Dependent</b> because the support is a triangle, so f ≠ f<sub>X</sub>·f<sub>Y</sub>. Also E[XY] = 2/15.</p>
+  </div>
+</section>
+
+<section id="a8">
+  <h2><span class="n">8</span>MCQ Quiz (24 questions)</h2>
+  <div class="card">
+    <div class="xp"><span>Question <b id="m5N">1</b> / <b id="m5T">24</b></span><span>Score: <b id="m5S">0</b></span></div>
+    <div id="m5Box" style="margin-top:12px"></div>
+    <div class="out" id="m5Fb" style="display:none"></div>
+    <div class="ctl"><button id="m5Next" style="display:none">Next question</button><button class="ghost" id="m5Restart">Restart (shuffle)</button></div>
+  </div>
+</section>
+
+<section id="a9">
+  <h2><span class="n">9</span>Exercises from your sheet, with answers</h2>
+  <p style="color:var(--mut)">Try each one first. Answers were checked numerically.</p>
+  <details><summary>[1] 4 red, 3 white, 2 blue chips; draw 3 without replacement. Joint p.m.f. of X (white), Y (blue)</summary>
+    h(x,y) = C(3,x)·C(2,y)·C(4, 3−x−y) / C(9,3), for x = 0..3, y = 0..2, x + y ≤ 3 (and 3−x−y ≤ 4).</details>
+  <details><summary>[2] h = c(x²+y²), x ∈ {−1,0,1,3}, y ∈ {−1,2,3}</summary>
+    Σ(x²+y²) = 3(11) + 4(14) = 89 → <b>c = 1/89</b>.<br>
+    g<sub>X</sub>: x=−1: 17/89, 0: 14/89, 1: 17/89, 3: 41/89. g<sub>Y</sub>: y=−1: 15/89, 2: 27/89, 3: 47/89.<br>
+    E[X] = 123/89, E[Y] = 180/89, E[XY] = 210/89 → <b>cov = −3450/7921 ≈ −0.436</b>, <b>ρ ≈ −0.188</b>.</details>
+  <details><summary>[3] f = kx(x−y), 0&lt;x&lt;1, |y|&lt;x</summary>
+    ∫₀¹ x·∫<sub>−x</sub><sup>x</sup>(x−y) dy dx = ∫₀¹ x·2x² dx = 1/2 → <b>k = 2</b>.</details>
+  <details><summary>[3 second version] f = k(x−y), 0&lt;x&lt;1, |y|&lt;x. Find k and cov(3X+7, 2Y+3)</summary>
+    ∫₀¹∫<sub>−x</sub><sup>x</sup>(x−y) dy dx = 2/3 → <b>k = 3/2</b>.<br>
+    E[X] = 3/4, E[Y] = −1/4, E[XY] = −1/5 → cov(X,Y) = −1/80.<br>
+    cov(3X+7, 2Y+3) = 6·cov(X,Y) = <b>−3/40</b>.</details>
+  <details><summary>[4] f = k on 0&lt;y&lt;x&lt;2. Find k and cov(3X−7, 2Y+3)</summary>
+    Triangle area = 2 → <b>k = 1/2</b>. E[X] = 4/3, E[Y] = 2/3, E[XY] = 1 → cov(X,Y) = 1/9.<br>
+    cov(3X−7, 2Y+3) = 6/9 = <b>2/3</b>.</details>
+  <details><summary>[5] Table: Y ∈ {−2,−1,2,4}, X ∈ {1,2,3}. Find P(Y&gt;X), cov, Var(2X−5Y+7)</summary>
+    <span style="color:var(--mut)">The table's numbers were scrambled in the text copy; I read the columns as Y=−2: (.1,0,.1), Y=−1: (.2,.1,0), Y=2: (0,.1,.1), Y=4: (.1,.2,0). They sum to 1. Load "Exercise [5]" in the Lab to check this against your page.</span><br>
+    P(Y&gt;X) = <b>0.3</b>. E[X]=1.8, E[Y]=0.9, E[XY]=1.8 → <b>cov = 0.18</b>.<br>
+    Var X = 0.56, Var Y = 5.89 → Var(2X−5Y+7) = 4(0.56) + 25(5.89) − 20(0.18) = <b>145.89</b>.</details>
+  <details><summary>[6] f = kxy, 0&lt;x&lt;y&lt;1</summary>
+    I. ∫₀¹∫₀^y xy dx dy = 1/8 → <b>k = 8</b>.<br>
+    II. Support is a triangle, not a rectangle (also f<sub>X</sub> = 4x(1−x²), f<sub>Y</sub> = 4y³, and their product ≠ 8xy) → <b>dependent</b>.<br>
+    III. E[X] = 8/15, E[Y] = 4/5, E[XY] = 4/9 → <b>cov = 4/225</b>.</details>
+  <details><summary>[7] Var X₁=5, X₂=4, X₃=7, cov(X₁,X₂)=3, cov(X₁,X₃)=−2, X₂,X₃ independent. ρ of Y=X₁−2X₂+3X₃, Z=−2X₁+3X₂+4X₃</summary>
+    Var Y = 60, Var Z = 164, cov(Y,Z) = 75 → <b>ρ = 75/√9840 ≈ 0.756</b>.</details>
+  <details><summary>[8] f = k on x&gt;0, y&gt;0, x+y&lt;4</summary>
+    Area = 8 → <b>k = 1/8</b>. E[X] = E[Y] = 4/3, E[XY] = 4/3 → <b>cov = 4/3 − 16/9 = −4/9</b>.</details>
+  <details><summary>[9] In terms of Var X, Var Y, cov</summary>
+    Var(X+Y) = VarX + VarY + 2cov. Var(X−Y) = VarX + VarY − 2cov. cov(X−Y, X+Y) = <b>VarX − VarY</b>.</details>
+  <details><summary>[10] MCQs</summary>
+    (i) k = 1/72, P(X+Y ≤ 3) = 44/72 = 11/18 → <b>c</b>.<br>
+    (ii) k = 1/48, P(X+Y &gt; 2) = 35/48 → <b>d (none of the above)</b>.<br>
+    (iii) 9(5) + 4(4) − 12(3) = 25 → <b>b</b>.<br>
+    (iv) triangle area 2 → k = 1/2 → <b>b</b>.</details>
+  <div class="card">
+    <b>Typos in your Chapter 5 notes</b>
+    <ul>
+      <li>Example 5.8 says g<sub>X</sub>(0) = 5/12; it should be <b>5/14</b>.</li>
+      <li>Example 5.2 mentions "physics texts"; it means arts texts.</li>
+      <li>Example 5.10 says "examples 5.2, 5.4 and 5.10"; it should refer to 5.9.</li>
+      <li>Example 5.13: cov(U,V) is <b>−20</b>, not −14 (see section 6).</li>
+      <li>Theorem 5.3 appears twice (the second should be Theorem 5.4 or 5.5).</li>
+    </ul>
+  </div>
+</section>
+</div>
+        </div>
+        <div id="sx-foot"></div>
+      </div>
+
+      <div id="v-mm" hidden>
+        <div class="page-h"><div><h1>Mind Maps</h1><p>Six blackboard maps built from your lectures and chapters. Drag to pan, scroll or pinch to zoom, click any note for its explanation, and use ⊕ / ⊖ to open or close a branch.</p></div></div>
+        <div id="mm-host"></div>
+        <p class="mmnote">Notes are never invented: every node comes from the lecture slides or the chapter text.</p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="mindmap-data.js"></script>
+<script src="os-app.js"></script>
+<script src="stats-app.js"></script>
+<script src="mindmap.js"></script>
+<script src="hub.js"></script>
+</body>
+</html>

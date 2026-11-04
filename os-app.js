@@ -1182,7 +1182,63 @@ const M=[
 [4,"In a heterogeneous multiprocessor system:",["Programs must be compiled for the proper processors","All processes are identical","There is only one queue","No scheduling is needed"],0,"Heterogeneous: programs must be compiled for instructions on proper processors."],
 [4,"In hard real-time scheduling, a task that cannot reserve its resources is:",["Delayed forever","Rejected","Given priority","Converted to soft real-time"],1,"Resource reservation: task is rejected if resources are not available."],
 [4,"Soft real-time systems require:",["Large dispatch latency","Small dispatch latency, usually via preemption","No priorities","Fixed quantum of 8 ms"],1,"Soft RT: priority over others + small dispatch latency (preemption)."],
-[4,"A deadline job delivered after its deadline is considered:",["Very high priority","Worthless","Low priority","Normal"],1,"Delivered after deadline: worthless."]
+[4,"A deadline job delivered after its deadline is considered:",["Very high priority","Worthless","Low priority","Normal"],1,"Delivered after deadline: worthless."],
+[1,"The OS objective that lets you write a program without knowing hardware details is:",["Monitoring and alerting", "Efficiency", "Protection", "Abstraction"],3,"Abstraction = hardware-independent programming model. مش فارق معاك نوع الـ disk أو الشاشة."],
+[1,"Login and user authentication belong to which OS service?",["System access", "Error detection and response", "Program execution", "Accounting"],0,"System access = user authentication (الـ login)."],
+[1,"Collecting usage statistics and billing users is the OS service called:",["Accounting", "System access", "Controlled access to data", "Program development"],0,"Accounting: collect statistics, monitor performance, and can be used for billing."],
+[1,"Arithmetic overflow is an example of:",["An accounting statistic", "A device failure", "A software error detected by the OS", "An internal hardware error"],2,"الـ error detection بيشمل hardware errors (memory error / device failure) و software errors (arithmetic overflow / الوصول لمكان ممنوع في الـ memory)."],
+[1,"Which is a function of an OS on a network?",["Editing users’ source code", "Increasing disk capacity", "Replacing faulty processors", "Preventing users from interfering with one another"],3,"الـ 6 وظايف: share H/W, share data, prevent interference, schedule resources, organize data, handle network communications."],
+[1,"Which person works directly at the hardware level in the layered view of a computer system?",["The application programmer", "The end user", "The OS designer", "The spreadsheet user"],2,"End user ➜ applications. Programmer ➜ utilities + OS. OS designer ➜ hardware."],
+[1,"Going down the storage hierarchy from registers to magnetic tapes:",["Everything stays the same except volatility", "Speed increases and cost increases", "Speed and cost per byte decrease while capacity increases", "Speed decreases but cost increases"],2,"كل ما تنزل: أبطأ، أرخص لكل byte، سعة أكبر، وبيبقى non-volatile."],
+[1,"Which level comes immediately after cache in the storage hierarchy?",["Main memory", "Optical disk", "Registers", "Magnetic disk"],0,"الترتيب: registers → cache → main memory → electronic disk → magnetic disk → optical disk → magnetic tapes."],
+[1,"Which of these is listed as a kernel responsibility in the lecture?",["Spreadsheet calculation", "Garbage collection", "Word processing", "Database reporting"],1,"Kernel: memory allocation, garbage collection, object finalization, module termination, interfacing to the underlying OS and clock functions."],
+[1,"A system that gives each user a small time slice to get a low response time is a:",["Handheld system", "Simple batch system", "Time-sharing system", "Parallel system"],2,"Time-sharing = low response time عن طريق time slices."],
+[1,"A parallel system is one that has:",["A single user and a single job", "Two or more processors sharing the computer bus", "One CPU and no memory", "Independent computers connected only by a network"],1,"Parallel = 2+ CPUs بيتشاركوا في الـ bus. أما الشبكة فده distributed."],
+[1,"Desktop systems belong to which computer category?",["Mobile devices", "Mainframe computers", "Microcomputers", "Supercomputers"],2,"Microcomputers (PCs) ← Desktop systems."],
+[1,"Independent computers that communicate over a network form which type of system?",["Distributed system", "Personal system", "Simple batch system", "Handheld system"],0,"Distributed = network."],
+[2,"The I/O system consists of:",["A shell and a compiler", "A CPU and registers only", "Only a disk scheduler", "A buffer-caching system, a general device-driver interface and drivers for specific devices"],3,"ده تعريف الـ I/O system في المحاضرة."],
+[2,"Secondary storage is needed because main memory is:",["Not addressable", "Slower than tape", "Non-volatile and too large", "Volatile and too small"],3,"Main memory volatile + صغيرة، فالـ secondary storage بيعمل backup ليها."],
+[2,"Which is NOT a process-management duty of the OS?",["Manufacturing CPU chips", "Process creation and deletion", "Suspension and resumption", "Process synchronization and communication"],0,"الـ OS بيدير الـ processes، مش بيصنع hardware."],
+[2,"A file is best defined as:",["A collection of related information defined by its creator", "A set of CPU registers", "A part of the interrupt vector", "A queue of device requests"],0,"File = related information defined by its creator (source/object programs and data)."],
+[2,"A protection mechanism must:",["Only encrypt files", "Only schedule the CPU", "Only delete unused files", "Distinguish authorized from unauthorized usage, specify controls and enforce them"],3,"Distinguish + specify the controls + provide a means of enforcement."],
+[2,"The interface between a running program and the OS is provided by:",["The interrupt vector", "Utilities only", "System calls", "System programs"],2,"System calls = interface بين الـ running program والـ OS."],
+[2,"Most users’ view of the operating system is defined by:",["The interrupt vector", "System programs", "System calls", "The device controllers"],1,"أغلب المستخدمين بيشوفوا system programs مش الـ system calls نفسها."],
+[2,"In UNIX, the kernel is everything:",["Above the shell", "Inside the user programs", "Below the system-call interface and above the hardware", "Outside the OS"],2,"Kernel = file system, CPU scheduling, memory management... كلها في level واحد."],
+[2,"In a layered OS, each layer may use functions of:",["Only lower-level layers", "Only higher-level layers", "Any layer", "No other layer"],0,"كل layer بتستخدم الـ layers اللي تحتها بس."],
+[2,"In the first layered OS, which layer was responsible for memory management?",["Layer 2", "Layer 0", "Layer 5", "Layer 4"],0,"Layer 5 user programs · 4 buffering · 3 operator console driver · 2 memory management · 1 CPU scheduling · 0 hardware."],
+[2,"A virtual machine provides an interface that is:",["Identical to the bare hardware", "Simpler than the hardware", "Available only to the kernel", "Unrelated to the hardware"],0,"VM بتدّي interface مطابق للـ bare hardware."],
+[2,"Which is a DISADVANTAGE of virtual machines?",["They disturb normal system operation", "They are hard to implement because an exact duplicate of the machine is required", "They give no protection", "They cannot run more than one user"],1,"Disadvantages: no direct sharing of resources + صعبة التنفيذ."],
+[2,"An interrupt handler is a program that:",["Compiles programs", "Determines the nature of the interrupt and performs the needed actions", "Disables the CPU permanently", "Stores the user’s files"],1,"Interrupt handler = generally part of the OS."],
+[2,"With nested (priority) interrupts, a higher-priority interrupt:",["Is ignored", "Always waits for the lower one", "Disables the OS", "Can interrupt a lower-priority handler"],3,"Higher priority يقدر يقاطع lower-priority handler."],
+[2,"In synchronous I/O, control returns to the program:",["Never", "Only after the I/O completes", "Immediately after I/O starts", "After the next interrupt vector update"],1,"Synchronous = استنى لحد ما الـ I/O يخلص."],
+[3,"A process that is waiting to be assigned to a processor is in the ______ state.",["Ready", "Waiting", "Terminated", "New"],0,"Ready = جاهز ومستني الـ CPU. Waiting = مستني event (زي I/O)."],
+[3,"The transition new → ready is called:",["Admitted", "Scheduler dispatch", "Exit", "Interrupt"],0,"new→ready: admitted."],
+[3,"The transition running → terminated is caused by:",["Interrupt", "Exit", "Scheduler dispatch", "I/O completion"],1,"running→terminated: exit."],
+[3,"A process moves from waiting to ready when:",["The I/O or event it waited for completes", "It exits", "The scheduler dispatches it", "An interrupt occurs"],0,"waiting→ready: I/O or event completion."],
+[3,"The set of all processes in the system is the:",["Mailbox", "Device queue", "Ready queue", "Job queue"],3,"Job queue = كل الـ processes. Ready queue = اللي في الـ memory وجاهزة."],
+[3,"Processes waiting for an I/O device are placed in:",["The ready queue", "The job queue only", "Device queues", "The PCB"],2,"Device queues = processes مستنية device."],
+[3,"Medium-term scheduling is used to:",["Choose the next mailbox", "Create the PCB", "Swap partially executed processes in and out", "Select the quantum"],2,"Medium-term = swap in / swap out."],
+[3,"In the lecture, the example of an I/O-bound process is:",["Compiler", "Scanner", "Calculator", "Simulator"],1,"I/O-bound = Scanner (bursts قصيرة كتير). CPU-bound = Calculator."],
+[3,"After a parent creates a child, the two may:",["Run concurrently, or the parent may wait until the child terminates", "Run only if the child has no PCB", "Share nothing and never finish", "Never run together"],0,"Execution options: concurrent أو parent waits."],
+[3,"Which is NOT an operation on processes listed in the lecture?",["Suspend", "Defragment", "Dispatch", "Create"],1,"Operations: create, destroy, suspend, resume, change priority, block, wakeup, dispatch, enable IPC."],
+[3,"A thread has its own ______ but shares code and data with its peers.",["Data section", "Code section", "Task", "PCB"],3,"Thread (lightweight process) عنده PCB خاص بيه."],
+[3,"User-level threads have a drawback when:",["The task has one thread", "The parent terminates", "The mailbox is full", "The kernel does not support threads"],3,"User-level threads via a thread library — drawback لو الـ kernel مش بيدعم threads."],
+[3,"Which operating system used the hybrid thread approach in the lecture?",["Project Andrew", "OS/2", "Solaris 2", "Mac"],2,"Hybrid = Solaris 2. Kernel-level = Mac & OS/2. User-level = Project Andrew."],
+[3,"Mailboxes in indirect communication are also called:",["Ports", "PCBs", "Stacks", "Queues of quanta"],0,"Mailboxes (ports) with unique IDs."],
+[3,"With bounded-capacity buffering, the sender must wait when:",["The receiver is a child", "The message is variable-size", "The link is full", "The link is empty"],2,"Bounded = finite n messages، لو امتلى الـ sender يستنى."],
+[4,"For P1(0,7), P2(2,4), P3(4,1), P4(5,4), SRTF gives an average waiting time of:",["4", "3", "5", "7"],1,"SRTF = (9+1+0+2)/4 = 3."],
+[4,"All arrive at time 0 with bursts P1=6, P2=8, P3=7, P4=3. The SJF average waiting time is:",["9", "7", "13.25", "10.25"],1,"Order P4,P1,P3,P2 → waits 0,3,9,16 → 28/4 = 7."],
+[4,"For the same processes (P1=6, P2=8, P3=7, P4=3, all at 0), FCFS in order P1..P4 gives:",["8", "7", "10.25", "13.25"],2,"Waits 0,6,14,21 → 41/4 = 10.25."],
+[4,"For the same processes with Round Robin q = 4, the average waiting time is:",["10.25", "9", "13.25", "7"],2,"Finish: P4=15, P1=17, P2=21, P3=24. Waiting = finish − burst = 11,13,17,12 → 53/4 = 13.25."],
+[4,"Priority (non-preemptive, all at 0): P1 burst 10 pri 3, P2 1 pri 1, P3 2 pri 4, P4 1 pri 5, P5 5 pri 2. The average waiting time is:",["9.6", "8.2", "6", "12"],1,"Order P2,P5,P1,P3,P4 → waits 0,1,6,16,18 → 41/5 = 8.2."],
+[4,"In the MLFQ example (Q0 = 8 ms, Q1 = 16 ms, Q2 = FCFS), how long does a 30 ms job run in Q2?",["14 ms", "6 ms", "22 ms", "8 ms"],1,"8 في Q0 + 16 في Q1 = 24، فالباقي 6 ms في Q2."],
+[4,"With 5 processes and quantum 20 ms in RR, the maximum wait of any process is:",["20 ms", "60 ms", "100 ms", "80 ms"],3,"(n−1)q = 4×20 = 80."],
+[4,"SJF can be seen as priority scheduling where the priority is:",["The memory size", "The process ID", "The arrival time", "The predicted next CPU burst time"],3,"SJF = priority scheduling بالـ predicted next CPU burst."],
+[4,"Fixed-priority scheduling between multilevel queues may cause:",["Zero waiting time", "Deadlock of the dispatcher", "Smaller quanta", "Starvation"],3,"لو خدمنا الـ foreground كله الأول، الـ background ممكن ما يشتغلش خالص = starvation."],
+[4,"Which time-slice example is given for a multilevel queue?",["80% to foreground (RR) and 20% to background (FCFS)", "50% to each queue FCFS", "20% to foreground and 80% to system", "100% to the background"],0,"Time slice between queues: 80/20."],
+[4,"Deadline scheduling is very complex because:",["It has no deadlines", "The user must supply precise resource requirements in advance, which is rare", "It never uses the CPU", "It always uses RR"],1,"من الأسباب: precise resource requirements مقدماً — معلومة نادرة."],
+[4,"A homogeneous multiprocessor system is one in which:",["There is only one CPU", "Processes are identical in terms of functionality", "Programs must be compiled for specific processors", "Each CPU has a different OS"],1,"Homogeneous = identical. Heterogeneous = لازم compile للـ processors المناسبة."],
+[4,"In the lecture figure with process time 10, how many context switches occur with quantum 1?",["10", "9", "1", "0"],1,"Quantum 12 → 0، quantum 6 → 1، quantum 1 → 9 context switches."]
 ];
 const TF=[
 [1,"An OS is a program that controls the execution of application programs.",true,"صح — جزء من التعريف."],
@@ -1247,7 +1303,45 @@ const TF=[
 [4,"In the MLFQ example, Q2 is served by FCFS.",true,"صح."],
 [4,"A common ready queue accessed by one processor corresponds to master-slave (asymmetric) multiprocessing.",true,"صح."],
 [4,"In hard real-time scheduling, a task is rejected if its resources are not available.",true,"صح — resource reservation."],
-[4,"Deadline jobs delivered after the deadline still have high value.",false,"غلط — worthless."]
+[4,"Deadline jobs delivered after the deadline still have high value.",false,"غلط — worthless."],
+[1,"Abstraction means programmers must know the exact disk model to use it.",false,"غلط — Abstraction = hardware-independent."],
+[1,"Accounting can be used for billing users.",true,"صح."],
+[1,"Memory error and device failure are internal hardware errors detected by the OS.",true,"صح."],
+[1,"Registers are slower than magnetic tapes.",false,"غلط — registers أسرع مستوى."],
+[1,"Main memory is volatile.",true,"صح — بيفقد البيانات لما الكهربا تقطع."],
+[1,"A multi-programmed batch system keeps more than one job in memory.",true,"صح."],
+[1,"The end user interacts directly with the hardware layer.",false,"غلط — بيتعامل مع الـ application programs."],
+[1,"Supercomputers correspond to parallel and distributed systems.",true,"صح."],
+[1,"Real-time systems are characterized by deadlines.",true,"صح."],
+[2,"The interrupt vector holds the addresses of all interrupt service routines.",true,"صح."],
+[2,"Interrupts are generally disabled while another interrupt is being processed in the basic approach.",true,"صح — عشان ما يضيعش interrupt."],
+[2,"A trap is generated by an I/O device.",false,"غلط — trap = software-generated."],
+[2,"A device controller has a local buffer.",true,"صح."],
+[2,"In synchronous I/O the process continues without waiting.",false,"غلط — ده asynchronous."],
+[2,"DMA is meant for high-speed I/O devices.",true,"صح."],
+[2,"System programs define most users’ view of the OS.",true,"صح."],
+[2,"A virtual machine disturbs normal system operation during OS development.",false,"غلط — perfect vehicle for OS research بدون ما تعطّل النظام."],
+[2,"In the layered approach the top layer N is the user interface.",true,"صح — layer 0 = hardware."],
+[2,"Separating policy from mechanism gives flexibility if policy decisions change.",true,"صح."],
+[3,"A process in the new state is being created.",true,"صح."],
+[3,"The transition ready → running is called scheduler dispatch.",true,"صح."],
+[3,"Several processes can be running at the same time on a single CPU.",false,"غلط — واحدة بس running."],
+[3,"The PCB stores a pointer to the process’s parent.",true,"صح."],
+[3,"The job queue contains only the processes that are in main memory and ready.",false,"غلط — ده الـ ready queue. الـ job queue = كل الـ processes."],
+[3,"The short-term scheduler must be fast because it is invoked every few milliseconds.",true,"صح."],
+[3,"An I/O-bound process has few very long CPU bursts.",false,"غلط — many short CPU bursts."],
+[3,"A thread shares its code section with its peer threads.",true,"صح."],
+[3,"In direct communication, processes name each other explicitly.",true,"صح — send(P, message)."],
+[3,"In indirect communication, a link may be associated with many processes.",true,"صح."],
+[3,"With bounded capacity the sender waits if the link is full.",true,"صح."],
+[4,"The scheduling goal is to maximize CPU utilization.",true,"صح."],
+[4,"Throughput should be minimized.",false,"غلط — بنكبّر الـ throughput."],
+[4,"SJF gives lower average turnaround than RR but longer response.",true,"صح."],
+[4,"In RR, q large behaves like FIFO.",true,"صح."],
+[4,"The multilevel feedback queue can implement aging.",true,"صح."],
+[4,"In the MLFQ example a job that does not finish in Q0 moves to Q2 directly.",false,"غلط — بيروح Q1 الأول."],
+[4,"Soft real-time scheduling needs small dispatch latency, usually via preemption.",true,"صح."],
+[4,"For the lecture SJF example, non-preemptive SJF gives average waiting 4 and SRTF gives 3.",true,"صح."]
 ];
 const MCQ=M.map(x=>({l:x[0],q:x[1],o:x[2],a:x[3],e:x[4],k:'MCQ'}));
 const TFQ=TF.map(x=>({l:x[0],q:x[1],o:['True ✅','False ❌'],a:x[2]?0:1,e:x[3],k:'T/F'}));
@@ -1293,6 +1387,58 @@ function finalTest(el){
     else if(t.dataset.n!==undefined&&state=='run'){ans[t.dataset.n]=+t.dataset.k;const y=window.scrollY;run();window.scrollTo(0,y)}};
 }
 
+
+/* ============ EXAM CENTER ============ */
+const EXAMS=[
+ {id:'e12',t:'Midterm Mock · Lectures 1–2',d:'Intro, system types, interrupts, I/O and OS structures',lecs:[1,2],mcq:18,tf:7,min:25},
+ {id:'e3',t:'Processes Exam · Lecture 3',d:'Process states, PCB, schedulers, threads and IPC',lecs:[3],mcq:16,tf:6,min:20},
+ {id:'e4',t:'CPU Scheduling Exam · Lecture 4',d:'Criteria, algorithms and waiting-time calculations',lecs:[4],mcq:20,tf:8,min:25},
+ {id:'ef',t:'Full Mock Final · Lectures 1–4',d:'Everything mixed, balanced across the four lectures',lecs:[1,2,3,4],mcq:30,tf:10,min:45}
+];
+const WR=[[1, "Theory", "Define an operating system.", "<ul><li>A software that <b>controls</b> the hardware (processors, storage, I/O, communication devices, data).</li><li>A software that <b>manages</b> the hardware.</li><li>A <b>resource allocator</b>.</li><li>A program that controls the execution of application programs and coordinates all software activities.</li></ul>"], [1, "Theory", "List four objectives of an OS.", "<p>Any four of: Convenience · Ease of communication · Abstraction · Efficiency · Monitoring and alerting · Ability to evolve · Protection · Increasing performance.</p>"], [1, "Theory", "List the services provided by the OS.", "<p>Program development · Program execution · Access to I/O devices · Controlled access to data · System access · Error detection and response · Accounting.</p>"], [1, "Theory", "Compare simple batch and time-sharing systems.", "<table><tr><th></th><th>Simple batch</th><th>Time-sharing</th></tr><tr><td>Jobs</td><td>One job at a time, programs/data in groups</td><td>Many users share the CPU in time slices</td></tr><tr><td>Goal</td><td>Process whole jobs</td><td>Low response time</td></tr><tr><td>Memory</td><td>One job</td><td>A program shares in time only if it is in memory</td></tr></table>"], [1, "Theory", "Name the seven levels of the storage hierarchy and state what changes as you go down.", "<p>Registers → cache → main memory → electronic disk → magnetic disk → optical disk → magnetic tapes.</p><p>Going down: speed ↓, cost per byte ↓, capacity ↑, and storage becomes non-volatile.</p>"], [2, "Theory", "Explain what happens when an interrupt occurs.", "<ol><li>The architecture saves the address of the interrupted instruction and the CPU state.</li><li>Control transfers to the interrupt service routine through the interrupt vector.</li><li>The handler determines the nature of the interrupt and performs the actions.</li><li>The CPU state is restored and the interrupted program continues.</li></ol><p>Interrupts are disabled while one is processed (or handled by priority/nesting).</p>"], [2, "Theory", "Differentiate between synchronous and asynchronous I/O, and explain DMA.", "<p><b>Synchronous:</b> control returns only after the I/O completes.</p><p><b>Asynchronous:</b> control returns immediately; the process checks device status or is interrupted when I/O completes.</p><p><b>DMA:</b> for high-speed devices, the controller moves blocks of data between buffer storage and main memory without CPU intervention.</p>"], [2, "Theory", "Explain three methods to pass parameters to the OS in a system call.", "<ol><li>In registers.</li><li>Store them in a table in memory and pass the table address.</li><li>Push them onto the stack by the program and pop them by the OS.</li></ol>"], [2, "Theory", "What are the advantages and disadvantages of virtual machines?", "<p><b>Advantages:</b> complete protection (each VM isolated); perfect vehicle for OS research and development without disturbing normal operation.</p><p><b>Disadvantages:</b> no direct sharing of resources; hard to implement (exact duplicate of the machine).</p>"], [2, "Theory", "Describe the layered approach and give the layers of the first layered OS.", "<p>The OS is divided into layers: layer 0 = hardware, layer N = user interface; each layer uses only lower-level layers.</p><p>Layer 5 user programs · 4 buffering for I/O · 3 operator-console device driver · 2 memory management · 1 CPU scheduling · 0 hardware.</p>"], [3, "Theory", "Draw and explain the process state diagram.", "<p>States: new, ready, running, waiting, terminated.</p><p>Transitions: new→ready (admitted) · ready→running (scheduler dispatch) · running→ready (interrupt) · running→waiting (I/O or event wait) · waiting→ready (I/O or event completion) · running→terminated (exit).</p>"], [3, "Theory", "What information does a PCB contain?", "<p>Current state · unique identification · pointers to parent and child · pointers to allocated resources (e.g., memory range) · CPU scheduling information.</p>"], [3, "Theory", "Compare the long-term, short-term and medium-term schedulers.", "<table><tr><th>Scheduler</th><th>Role</th><th>Frequency</th></tr><tr><td>Long-term (job)</td><td>Selects processes to bring into the ready queue; controls the degree of multiprogramming</td><td>Very infrequent (seconds/minutes)</td></tr><tr><td>Short-term (CPU)</td><td>Selects the next process and allocates the CPU</td><td>Very frequent (milliseconds), must be fast</td></tr><tr><td>Medium-term</td><td>Swaps partially executed processes in/out</td><td>As needed</td></tr></table>"], [3, "Theory", "Compare a process and a thread.", "<p>A thread (lightweight process) is a basic unit of CPU utilization with its own PCB. Peer threads share the code section, data section and OS resources (a task). A traditional heavyweight process is a task with one thread. In a multi-threaded task, when one thread blocks another can run, which raises throughput.</p>"], [3, "Theory", "Compare direct and indirect communication.", "<table><tr><th></th><th>Direct</th><th>Indirect</th></tr><tr><td>Addressing</td><td>send(P, msg), receive(Q, msg)</td><td>Through mailboxes (ports)</td></tr><tr><td>Link</td><td>Exactly one pair, one link per pair, usually bi-directional</td><td>Needs a shared mailbox; may involve many processes and several links</td></tr></table>"], [3, "Theory", "Explain the three buffering types in IPC.", "<p><b>Zero capacity:</b> 0 messages, the sender waits for the receiver.</p><p><b>Bounded capacity:</b> n messages, the sender waits if the link is full.</p><p><b>Unbounded capacity:</b> infinite length, the sender never waits.</p>"], [4, "Theory", "List the five scheduling criteria and say which are maximized or minimized.", "<p>Maximize: CPU utilization, throughput. Minimize: turnaround time, waiting time, response time.</p>"], [4, "Theory", "What is starvation in priority scheduling and how is it solved?", "<p>Low-priority processes may never execute. Solution: <b>aging</b> — gradually increase the priority of a process as time progresses.</p>"], [4, "Theory", "Describe the multilevel feedback queue example with three queues.", "<p>Q0 (quantum 8 ms) → Q1 (quantum 16 ms) → Q2 (FCFS). A new job enters Q0 and gets 8 ms; if unfinished it moves to Q1 for 16 more ms; if still unfinished it is preempted and moved to Q2.</p>"], [4, "Theory", "Compare hard and soft real-time scheduling.", "<p><b>Hard:</b> must finish at exact times; uses resource reservation, and a task is rejected if resources are unavailable.</p><p><b>Soft:</b> critical processes get priority over others; requires small dispatch latency, usually via preemption.</p>"], [4, "Problem", "All arrive at time 0: P1=6, P2=8, P3=7, P4=3. Compute the average waiting time under FCFS (P1..P4), SJF and RR (q = 4).", "<p><b>FCFS:</b> waits 0, 6, 14, 21 → <b>10.25</b>.</p><p><b>SJF</b> (P4, P1, P3, P2): waits 3, 16, 9, 0 → <b>7</b>.</p><p><b>RR q=4:</b> order P1(0-4) P2(4-8) P3(8-12) P4(12-15) P1(15-17) P2(17-21) P3(21-24). Finish: P1=17, P2=21, P3=24, P4=15. Waits 11, 13, 17, 12 → <b>13.25</b>.</p><p>SJF is the best here (optimal).</p>"], [4, "Problem", "P1(arr 0, burst 8), P2(1, 4), P3(2, 9), P4(3, 5). Compute the average waiting time under SRTF and non-preemptive SJF.", "<p><b>SRTF:</b> P1 0-1, P2 1-5, P4 5-10, P1 10-17, P3 17-26. Waiting: P1 = 9, P2 = 0, P3 = 15, P4 = 2 → 26/4 = <b>6.5</b>.</p><p><b>Non-preemptive SJF:</b> P1 0-8, P2 8-12, P4 12-17, P3 17-26. Waiting: P1 = 0, P2 = 7, P3 = 15, P4 = 9 → 31/4 = <b>7.75</b>.</p>"], [4, "Problem", "Priority scheduling, all at time 0 (smallest number = highest priority): P1 burst 10 pri 3; P2 1 pri 1; P3 2 pri 4; P4 1 pri 5; P5 5 pri 2. Draw the Gantt chart and compute the average waiting and turnaround time.", "<p>Gantt: P2 (0-1) | P5 (1-6) | P1 (6-16) | P3 (16-18) | P4 (18-19).</p><p>Waiting: 6, 0, 16, 18, 1 → 41/5 = <b>8.2</b>. Turnaround: 16, 1, 18, 19, 6 → 60/5 = <b>12</b>.</p>"], [4, "Problem", "Using the lecture RR example (q = 20; P1=53, P2=17, P3=68, P4=24), give the finishing time of every process and the average waiting time.", "<p>Finish: P2 = 37, P4 = 121, P1 = 134, P3 = 162. Waiting = finish − burst: P1 = 81, P2 = 20, P3 = 94, P4 = 97 → 292/4 = <b>73</b>.</p>"], [4, "Problem", "A 30 ms CPU-bound job runs in a three-queue MLFQ (Q0 = 8 ms, Q1 = 16 ms, Q2 = FCFS). How much CPU time does it get in each queue?", "<p>Q0: 8 ms · Q1: 16 ms · Q2: remaining 30 − 24 = <b>6 ms</b>.</p>"]].map(w=>{w.l=w[0];return w});
+function examPick(pool,lecs,n){
+  const per=Math.ceil(n/lecs.length);let out=[];
+  lecs.forEach(l=>{out=out.concat(shuffle(pool.filter(x=>x.l==l)).slice(0,per))});
+  if(out.length<n){const rest=shuffle(pool.filter(x=>lecs.indexOf(x.l)>-1&&out.indexOf(x)<0));out=out.concat(rest.slice(0,n-out.length))}
+  return shuffle(out).slice(0,n)}
+const mixOpts=b=>{const ix=shuffle(b.o.map((_,i)=>i));return Object.assign({},b,{o:ix.map(i=>b.o[i]),a:ix.indexOf(b.a)})};
+function examCenter(el){
+  let state='menu',ex=null,items=[],ans={},left=0,timer=null,wl=0,showAll=false,recd=false;
+  const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  const menu=()=>{state='menu';
+    const wr=WR.filter(w=>!wl||w.l==wl);
+    el.innerHTML=`<div class="lec-head"><h2>📋 Exam Center</h2><p>امتحانات تجريبية بتتولّد عشوائي من بنك الأسئلة — بتوقيت، وفي الآخر بتشوف الشرح والـ breakdown لكل lecture.</p></div>
+    <div class="exgrid">${EXAMS.map(e=>`<div class="excard"><h3>${e.t}</h3><p>${e.d}</p><div class="exmeta"><span>${e.mcq+e.tf} questions</span><span>${e.min} min</span><span>${e.mcq} MCQ · ${e.tf} T/F</span></div><button class="btn" data-ex="${e.id}">▶ Start exam</button></div>`).join('')}</div>
+    <div class="lec-head" style="margin-top:26px"><h2>✍️ Written practice</h2><p>${WR.length} أسئلة مقالية ومسائل — جاوب على ورقة الأول وبعدين افتح الإجابة النموذجية.</p></div>
+    <div class="scorebar"><b>${wr.length} questions</b><span class="chips">${[[0,'All'],[1,'L1'],[2,'L2'],[3,'L3'],[4,'L4']].map(c=>`<button class="btn ${wl==c[0]?'':'ghost'}" data-w="${c[0]}">${c[1]}</button>`).join('')}</span></div>
+    ${wr.map(w=>`<details class="wq"><summary><i>L${w[0]}</i><i>${w[1]}</i> ${esc(w[2])}</summary><div class="wa">${w[3]}</div></details>`).join('')}`};
+  const run=()=>{
+    const n=Object.keys(ans).length;
+    el.innerHTML=`<div class="scorebar"><b>⏳ <span id="tm">${fmt(left)}</span></b><div class="prog"><i style="width:${n/items.length*100}%"></i></div><b>${n}/${items.length}</b><button class="btn" data-a="sub">Submit ✅</button></div><div class="lec-head"><h2>${ex.t}</h2></div>`+
+    items.map((b,i)=>`<div class="q"><div class="qt"><i>${b.k}</i><i>L${b.l}</i> ${i+1}. ${esc(b.q)}</div>${b.o.map((o,k)=>`<button class="opt ${ans[i]==k?'sel':''}" data-n="${i}" data-k="${k}">${esc(o)}</button>`).join('')}</div>`).join('')+`<div class="result"><button class="btn" data-a="sub">Submit ✅</button></div>`};
+  const finish=()=>{clearInterval(timer);state='done';
+    const r=items.filter((b,i)=>ans[i]==b.a).length,p=Math.round(r/items.length*100),used=ex.min*60-left;
+    if(!recd){recd=true;if(window.Hub)Hub.recordQuiz('os','Exam · '+ex.t.split(' · ')[0],r,items.length)}
+    const per=ex.lecs.map(l=>{const it=items.map((b,i)=>[b,i]).filter(x=>x[0].l==l);const ok=it.filter(x=>ans[x[1]]==x[0].a).length;return[l,ok,it.length]});
+    const list=items.map((b,i)=>[b,i]).filter(x=>showAll||ans[x[1]]!=x[0].a);
+    el.innerHTML=`<div class="result"><h2>${p}%</h2><p>${r}/${items.length} — ${p>=85?'🌟 ممتاز! انت جاهز':p>=65?'👍 كويس، راجع الغلط':'💪 راجع المحاضرات وجرّب تاني'} · ⏱️ ${fmt(used)}</p><button class="btn" data-a="menu">↩ Exam Center</button> <button class="btn" data-ex="${ex.id}">🔁 Retake (new questions)</button></div>
+    <div class="exbreak">${per.map(x=>`<div><b>Lecture ${x[0]}</b><div class="prog"><i style="width:${x[2]?x[1]/x[2]*100:0}%"></i></div><span>${x[1]}/${x[2]}</span></div>`).join('')}</div>
+    <div class="scorebar"><b>${showAll?'All answers':'Needs review ('+list.length+')'}</b><span class="chips"><button class="btn ghost" data-a="all">${showAll?'Show mistakes only':'Show all answers'}</button></span></div>`+
+    (list.length?list.map(x=>{const b=x[0],i=x[1],a=ans[i];return`<div class="q done"><div class="qt"><i>${b.k}</i><i>L${b.l}</i> ${i+1}. ${esc(b.q)}</div>${b.o.map((o,k)=>`<button class="opt ${k==b.a?'ok':k==a?'no':''}" disabled>${esc(o)}</button>`).join('')}<div class="exp">${a==b.a?'🎉 صح! ':a===undefined?'⚠️ مجاوبتش. ':'❌ غلط. '}${b.e}</div></div>`}).join(''):'<div class="exbreak"><div>🎉 مفيش أخطاء!</div></div>');
+    window.scrollTo(0,0)};
+  menu();
+  el.onclick=e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+    if(d.ex){ex=EXAMS.filter(x=>x.id==d.ex)[0];
+      items=examPick(MCQ,ex.lecs,ex.mcq).map(mixOpts).concat(examPick(TFQ,ex.lecs,ex.tf));
+      items=shuffle(items);ans={};left=ex.min*60;showAll=false;recd=false;state='run';run();window.scrollTo(0,0);clearInterval(timer);
+      timer=setInterval(()=>{left--;const tm=$('#tm');if(tm)tm.textContent=fmt(left);if(left<=0)finish()},1000)}
+    else if(d.w!==undefined){wl=+d.w;menu()}
+    else if(d.a=='sub'&&state=='run'){const miss=items.length-Object.keys(ans).length;if(!miss||confirm(miss+' سؤال لسه من غير إجابة. تسلّم برضه؟'))finish()}
+    else if(d.a=='menu'){clearInterval(timer);menu();window.scrollTo(0,0)}
+    else if(d.a=='all'){showAll=!showAll;finish()}
+    else if(d.n!==undefined&&state=='run'){ans[d.n]=+d.k;const y=window.scrollY;run();window.scrollTo(0,y)}};
+}
+
 /* ============ PAGE BUILD ============ */
 function lecPage(n){
   const d=LEC[n];
@@ -1310,7 +1456,7 @@ function lecPage(n){
   return h;
 }
 const PAGES=[
- ['l1','📘 Lecture 1'],['l2','📗 Lecture 2'],['l3','📙 Lecture 3'],['l4','📕 Lecture 4'],['cheat','📝 Cheatsheet'],['cards','🃏 Flashcards'],['mcq','❓ MCQ'],['tf','✔️ True/False'],['test','⏱️ Final Test']];
+ ['l1','📘 Lecture 1'],['l2','📗 Lecture 2'],['l3','📙 Lecture 3'],['l4','📕 Lecture 4'],['cheat','📝 Cheatsheet'],['cards','🃏 Flashcards'],['mcq','❓ MCQ'],['tf','✔️ True/False'],['test','⏱️ Final Test'],['exams','📋 Exams']];
 const main=$('#os-main'),built={};
 main.innerHTML=PAGES.map(p=>`<section class="page" id="pg-${p[0]}"></section>`).join('');
 function build(id){
@@ -1321,6 +1467,7 @@ function build(id){
   if(id=='mcq')quiz(el,MCQ,'❓ Multiple Choice Questions');
   if(id=='tf')quiz(el,TFQ,'✔️ True or False');
   if(id=='test')finalTest(el);
+  if(id=='exams')examCenter(el);
 }
 function show(id){
   build(id);
@@ -1329,6 +1476,6 @@ function show(id){
 main.addEventListener('click',e=>{const m=e.target.closest('[data-mm]');if(m)Hub.openMap(m.dataset.mm)});
 main.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(!g)return;const v=g.dataset.go;
   e.preventDefault();const t=document.getElementById(v);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
-window.OS={LEC,AR_PLUS,M,TF,MCQ,TFQ,FLASH,show,build};
+window.OS={LEC,AR_PLUS,M,TF,MCQ,TFQ,FLASH,EXAMS,WR,show,build};
 
 })();

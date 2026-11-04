@@ -222,7 +222,7 @@ function pageQuizzes(){
   return '<div class="page-h"><div><h1>Quizzes & Exams</h1><p>MCQs, true/false, timed tests and practice generators. Finished quizzes are recorded for your statistics.</p></div></div>'+
    '<div class="hgrid g3" style="margin-bottom:8px"><div class="stat paper"><div class="k">Overall average</div><div class="v">'+(quizAvg()==null?'—':quizAvg()+'%')+'</div><div class="n">'+(S.quiz.length?S.quiz.length+' finished quizzes':'No quiz finished yet')+'</div></div><div class="stat lav"><div class="k">OS average</div><div class="v">'+(osAvg==null?'—':osAvg+'%')+'</div><div class="n">'+S.quiz.filter(x=>x.subject==='os').length+' attempts</div></div><div class="stat peach"><div class="k">Statistics average</div><div class="v">'+(sxAvg==null?'—':sxAvg+'%')+'</div><div class="n">'+S.quiz.filter(x=>x.subject==='stats').length+' attempts</div></div></div>'+
    '<div class="sec-h"><h2>Operating Systems</h2></div><div class="toolbtns">'+
-    tl('os','quiz','MCQ ('+osN+' questions)','All lectures, with Egyptian Arabic explanations','#/os/tool/mcq')+tl('os','check','True / False ('+tfN+')','Quick checks','#/os/tool/tf')+tl('os','clock','Final Test','20 random questions · 15 minutes','#/os/tool/test')+
+    tl('os','quiz','MCQ ('+osN+' questions)','All lectures, with Egyptian Arabic explanations','#/os/tool/mcq')+tl('os','check','True / False ('+tfN+')','Quick checks','#/os/tool/tf')+tl('os','clock','Final Test','20 random questions · 15 minutes','#/os/tool/test')+tl('os','clock','Exam Center','4 timed mock exams + written practice','#/os/tool/exams')+
     [1,2,3,4].map(n=>tl('os','quiz','Lecture '+n+' practice','MCQs filtered to this lecture','#/os/tool/mcq/'+n)).join('')+'</div>'+
    '<div class="sec-h"><h2>Statistical Methods</h2></div><div class="toolbtns">'+
     tl('sx','quiz','Chapter 6 MCQ quiz','24 questions','#/stats/chapter/6/s8')+tl('sx','bolt','Chapter 6 practice generator','Unlimited questions with XP','#/stats/chapter/6/s9')+tl('sx','book','Chapter 6 exercises','From your sheet, with answers','#/stats/chapter/6/s10')+
@@ -258,7 +258,7 @@ function subjectHeader(k){
    '<div class="minis"><div class="hmini"><span>'+(k==='os'?'Total lectures':'Total chapters')+'</span><b>'+subjLec(k).length+'</b></div><div class="hmini"><span>Completed</span><b>'+doneCount(k)+'</b></div><div class="hmini"><span>Progress</span><b>'+pct(k)+'%</b><div class="hbar '+sj.cls+'" style="margin-top:6px"><i style="width:'+pct(k)+'%"></i></div></div><div class="hmini"><span>Recently studied</span><b style="font-size:16px;line-height:1.3;margin-top:6px">'+(rec?'<a href="'+rec.route+'" style="text-decoration:none">'+esc(rec.short)+'</a>':'—')+'</b></div></div>';
 }
 function pageSubject(k){
-  const tools=k==='os'?[['os','book','Cheatsheet','Comparison tables','#/os/tool/cheat'],['os','cards','Flashcards','Flip to check yourself','#/os/tool/cards'],['os','quiz','MCQ','Multiple choice with explanations','#/os/tool/mcq'],['os','check','True / False','Quick checks','#/os/tool/tf'],['os','clock','Final Test','Timed, 20 questions','#/os/tool/test'],['bl','map','Mind maps','Lectures 1 to 4','#/mindmaps/l1']]:
+  const tools=k==='os'?[['os','book','Cheatsheet','Comparison tables','#/os/tool/cheat'],['os','cards','Flashcards','Flip to check yourself','#/os/tool/cards'],['os','quiz','MCQ','Multiple choice with explanations','#/os/tool/mcq'],['os','check','True / False','Quick checks','#/os/tool/tf'],['os','clock','Final Test','Timed, 20 questions','#/os/tool/test'],['os','clock','Exams','Mock exams + written practice','#/os/tool/exams'],['bl','map','Mind maps','Lectures 1 to 4','#/mindmaps/l1']]:
    [['sx','calc','Cheat sheet and traps','Which distribution? Common mistakes','#/stats/chapter/6/s11'],['sx','bolt','Practice generator','Unlimited questions','#/stats/chapter/6/s9'],['sx','quiz','MCQ quizzes','Chapters 5 and 6','#/stats/chapter/6/s8'],['sx','book','Exercises with answers','From your sheet','#/stats/chapter/6/s10'],['bl','map','Mind maps','Chapters 5 and 6','#/mindmaps/c6']];
   return subjectHeader(k)+'<div class="sec-h"><h2>'+(k==='os'?'Lecture library':'Chapter library')+'</h2></div><div class="toolrow"><input class="txt" id="libq" data-a="libq" type="search" placeholder="Search by topic or title…" aria-label="Search"><div class="hchips"><button class="hchip on" data-a="libf" data-v="all">All</button><button class="hchip" data-a="libf" data-v="todo">Not completed</button><button class="hchip" data-a="libf" data-v="done">Completed</button></div></div><div class="hgrid g2" id="libg"></div>'+
    '<div class="sec-h"><h2>Study tools</h2></div><div class="toolbtns">'+tools.map(t=>'<a class="tl" href="'+t[4]+'"><span class="ic '+t[0]+'">'+ic(t[1])+'</span><span>'+t[2]+'<small>'+t[3]+'</small></span></a>').join('')+'</div>';
@@ -277,7 +277,7 @@ function lecFoot(r){
    '<div class="bottombar"><span>'+(prev?'<a class="hbtn soft" href="'+prev.route+'">← '+esc(prev.short)+'</a>':'')+'</span><button class="hbtn '+(done?'soft':'lav')+'" data-a="done" data-key="'+r.key+'">'+(done?'Completed ✓ (click to undo)':'Mark as completed')+'</button><span>'+(next?'<a class="hbtn" href="'+next.route+'">'+esc(next.short)+' →</a>':'')+'</span></div>';
 }
 function toolBar(active){
-  const T=[['cheat','Cheatsheet'],['cards','Flashcards'],['mcq','MCQ'],['tf','True / False'],['test','Final Test']];
+  const T=[['cheat','Cheatsheet'],['cards','Flashcards'],['mcq','MCQ'],['tf','True / False'],['test','Final Test'],['exams','Exams']];
   return '<div class="toolrow"><a class="hbtn sm soft" href="#/os">← Operating Systems</a><div class="hchips">'+T.map(t=>'<a class="hchip '+(t[0]===active?'on':'')+'" href="#/os/tool/'+t[0]+'" style="text-decoration:none">'+t[1]+'</a>').join('')+'</div></div>';
 }
 
@@ -318,7 +318,7 @@ function route(opt){
     }
     else if(k==='os'&&p[1]==='tool'){
       const t=p[2]||'cheat';showView('os');setNav('os');
-      crumbs(H.concat([[SUBJ.os.name,'#/os'],[{cheat:'Cheatsheet',cards:'Flashcards',mcq:'MCQ',tf:'True / False',test:'Final Test'}[t]||'Tools']]));document.title='Operating Systems · Study Hub';
+      crumbs(H.concat([[SUBJ.os.name,'#/os'],[{cheat:'Cheatsheet',cards:'Flashcards',mcq:'MCQ',tf:'True / False',test:'Final Test',exams:'Exams'}[t]||'Tools']]));document.title='Operating Systems · Study Hub';
       $('#os-head').innerHTML=toolBar(t);$('#os-foot').innerHTML='';OS.show(t);
       if(p[3]&&(t==='mcq'||t==='tf')){const b=$('#pg-'+t+' .chips button[data-l="'+p[3]+'"]');if(b)b.click()}
       if(!(opt&&opt.keep))window.scrollTo(0,0);return finishKeep(opt,y);
